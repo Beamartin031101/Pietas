@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">pieLogin</string>
+    <string name="sign_in">sign in</string>
+    <string name="sign_up">sign up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="wldsns">SNS로 로그인하기</string>
+    <string name="sign_button">sign in</string>
+    <string name="pietaslogin">Pietas</string>
+    <string name="logindecor">decor</string>
+    <string name="interesttext">상민님께 추천드리는 방입니다</string>
+    <string name="movie">시네마틱</string>
+    <string name="game">Gam3rs</string>
+    <string name="book">독서모임</string>
+    <string name="music">뮤지션</string>
+    <string name="purpleshell">purpleShell</string>
+    <string name="redshell">redShell</string>
+    <string name="greenshell">greenShell</string>
+    <string name="whiteshell">whiteShell</string>
+    <string name="sand">sand</string>
+    <string name="bubbles">bubbles</string>
+    <string name="names">배재성, 손정은, 하상민</string>
+</resources>

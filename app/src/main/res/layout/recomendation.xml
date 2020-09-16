@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/selectionPage"
+    android:background="@drawable/gradient_colour2"
+    tools:context=".login">
+
+    <ImageView
+        android:layout_width="450dp"
+        android:layout_height="176dp"
+        app:srcCompat="@drawable/bgdeco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/logindecor" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/plschoose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/tmon"
+            android:text="@string/interesttext"/>
+
+        <!--_________________________________********Buttons**********____________________________________-->
+        <!--____________firstButton___________-->
+        <ImageView
+            android:id="@+id/shell1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/shellpur"
+            app:layout_constraintTop_toBottomOf="@+id/plschoose"
+            app:layout_constraintStart_toStartOf="@+id/plschoose"
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/purpleshell" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/movie"
+            android:fontFamily="@font/tmon"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintTop_toTopOf="@id/shell1"
+            app:layout_constraintStart_toEndOf="@id/shell1"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="60dp" />
+
+        <Button
+            android:id="@+id/choice1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="@id/shell1"/>
+
+        <!--_______________secondButton____________-->
+        <ImageView
+            android:id="@+id/shell2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/shellred"
+            app:layout_constraintTop_toBottomOf="@+id/shell1"
+            app:layout_constraintStart_toStartOf="@+id/plschoose"
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/redshell" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/game"
+            android:fontFamily="@font/tmon"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintTop_toTopOf="@id/shell2"
+            app:layout_constraintStart_toEndOf="@id/shell2"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="60dp" />
+
+        <Button
+            android:id="@+id/choice2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="@id/shell2"/>
+
+        <!--_______________thirdButton_____________-->
+        <ImageView
+            android:id="@+id/shell3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/shellgre"
+            app:layout_constraintTop_toBottomOf="@+id/shell2"
+            app:layout_constraintStart_toStartOf="@+id/plschoose"
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/greenshell" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book"
+            android:fontFamily="@font/tmon"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintTop_toTopOf="@id/shell3"
+            app:layout_constraintStart_toEndOf="@id/shell3"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="60dp" />
+
+        <Button
+            android:id="@+id/choice3"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="@id/shell3"/>
+
+        <!--_______________forthButton_______________-->
+        <ImageView
+            android:id="@+id/shell4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/shellwhi"
+            app:layout_constraintTop_toBottomOf="@+id/shell3"
+            app:layout_constraintStart_toStartOf="@+id/plschoose"
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/whiteshell" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/music"
+            android:fontFamily="@font/tmon"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintTop_toTopOf="@id/shell4"
+            app:layout_constraintStart_toEndOf="@id/shell4"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="60dp" />
+
+        <Button
+            android:id="@+id/choice4"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="@id/shell4"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
