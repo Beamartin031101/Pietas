@@ -16,6 +16,7 @@
         android:layout_marginBottom="220dp"/>
 
     <ImageView
+        android:id="@+id/sand"
         android:layout_width="900dp"
         android:layout_height="280dp"
         android:src="@drawable/sand"
@@ -57,5 +58,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/roomname"
         android:layout_marginTop="30dp"/>
+
+    <Button
+        android:id="@+id/butLeft"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:background="@drawable/arrowleft"
+        app:layout_constraintBottom_toTopOf="@+id/sand"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+
+    <Button
+        android:id="@+id/butRight"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:background="@drawable/arrowright"
+        app:layout_constraintBottom_toTopOf="@+id/sand"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
