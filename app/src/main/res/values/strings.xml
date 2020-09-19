@@ -20,4 +20,6 @@
     <string name="sand">sand</string>
     <string name="bubbles">bubbles</string>
     <string name="names">배재성, 손정은, 하상민</string>
+    <string name="talkroom">취미토크</string>
+	<string name="chatroom">채팅</string>
 </resources>
