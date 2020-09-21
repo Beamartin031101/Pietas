@@ -22,4 +22,8 @@
     <string name="names">배재성, 손정은, 하상민</string>
     <string name="talkroom">취미토크</string>
 	<string name="chatroom">채팅</string>
+    <string name="jelly">jelly</string>
+    <string name="mango">mango</string>
+    <string name="dory">dory</string>
+    <string name="message">Message</string>
 </resources>
