@@ -1,4 +1,8 @@
 <resources>
+    <!-- facebook Login Code-->
+    <string name="facebook_app_id">3564760916868888</string> <string name="fb_login_protocol_scheme">fb3564760916868888</string>
+
+    <!-- string value code-->
     <string name="app_name">pieLogin</string>
     <string name="sign_in">sign in</string>
     <string name="sign_up">sign up</string>
