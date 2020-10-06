@@ -24,4 +24,6 @@
     <string name="sand">sand</string>
     <string name="bubbles">bubbles</string>
     <string name="names">배재성, 손정은, 하상민</string>
+    <string name="twitter_consumer_key" translatable="false">gvdJ93LRupuFRK1Ev54ni3NTE</string>
+    <string name="twitter_consumer_secret" translatable="false">cW5XKnARWjeGpbnEJXtqpLRzVzWUBhjp6NCq83pbvsMfBJeVDG</string>
 </resources>

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -34,6 +35,15 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.google.firebase.auth.TwitterAuthProvider;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterConfig;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 public class login extends AppCompatActivity {
 
@@ -42,14 +52,27 @@ public class login extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 9001;
     private static final int FB_SIGN_IN = 64206;
+    private static final int TW_SIGN_IN = 140;
     private static final String TAG = "LoginActivity";
 
     //facebook Variable init
     private CallbackManager mCallbackManager;
 
+    //twitter Variable init
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private TwitterLoginButton mTwitterBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        TwitterAuthConfig mTwitterAuthConfig = new TwitterAuthConfig(getString(R.string.twitter_consumer_key),
+                getString(R.string.twitter_consumer_secret));
+        TwitterConfig twitterConfig = new TwitterConfig.Builder(this)
+                .twitterAuthConfig(mTwitterAuthConfig)
+                .build();
+        Twitter.initialize(twitterConfig);
+
         setContentView(R.layout.login);
         //CheckLogIn
         mAuth = FirebaseAuth.getInstance();
@@ -95,6 +118,33 @@ public class login extends AppCompatActivity {
             }
         });
 
+        //init twitter login
+        mTwitterBtn = findViewById(R.id.tbutton);
+
+        mAuthListener = new FirebaseAuth.AuthStateListener(){
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
+                if (firebaseAuth.getCurrentUser() != null){
+                    openRecom();
+                }
+            }
+        };
+
+        mTwitterBtn.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                Toast.makeText(login.this, "Signed in to twitter successful", Toast.LENGTH_LONG).show();
+                signInToFirebaseWithTwitterSession(result.data);
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                Toast.makeText(login.this, "Login failed. No internet or No Twitter app found on your phone", Toast.LENGTH_LONG).show();
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            }
+        });
+
         //Please write explanation
         Button button = findViewById(R.id.confirm);
         button.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +163,12 @@ public class login extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser); //TODO: 이게 뭐하는 놈인지 알아보기
         //이 친구는 구글 공식 문서에서는 signInBtn을 invisible로 바꾸고 signOutBtn을 Visible로 바꾸는 친구임
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mAuth.removeAuthStateListener(mAuthListener);
     }
 
     //다음 페이지인 Recommendation으로 가는 부분
@@ -152,6 +208,9 @@ public class login extends AppCompatActivity {
             case FB_SIGN_IN:{
                 mCallbackManager.onActivityResult(requestCode, resultCode, data);
                 // DANGER - 이거 그냥 내가 실험으로 FB_SIGN_IN 구한 거라서 에러의 가능성이 있음
+            }
+            case TW_SIGN_IN:{
+                mTwitterBtn.onActivityResult(requestCode, resultCode, data);
             }
         }
     }
@@ -197,6 +256,26 @@ public class login extends AppCompatActivity {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(login.this, "Login failed.",
                                     Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    //twitter login 마치는 부분
+    private void signInToFirebaseWithTwitterSession(TwitterSession session){
+        AuthCredential credential = TwitterAuthProvider.getCredential(session.getAuthToken().token,
+                session.getAuthToken().secret);
+
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Toast.makeText(login.this, "Signed in firebase twitter successful", Toast.LENGTH_LONG).show();
+                        if (!task.isSuccessful()){
+                            Toast.makeText(login.this, "Auth firebase twitter failed", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            openRecom();
                         }
                     }
                 });
