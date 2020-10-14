@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chatpage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_colour2"
+    tools:context=".login">
+
+    <TextView
+        android:id="@+id/topblock"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/gradient_colour3"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/profinthird"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/profin"
+        app:layout_constraintTop_toTopOf="@id/topblock"
+        app:layout_constraintBottom_toBottomOf="@id/topblock"
+        app:layout_constraintStart_toStartOf="@id/profinsecond"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp" />
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/jelly"
+        app:layout_constraintTop_toTopOf="@id/profinthird"
+        app:layout_constraintBottom_toBottomOf="@id/profinthird"
+        app:layout_constraintStart_toStartOf="@id/profinthird"
+        app:layout_constraintEnd_toEndOf="@id/profinthird"
+        android:contentDescription="@string/jelly" />
+
+    <TextView
+        android:id="@+id/profinsecond"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/profin"
+        app:layout_constraintTop_toTopOf="@id/topblock"
+        app:layout_constraintBottom_toBottomOf="@id/topblock"
+        app:layout_constraintStart_toStartOf="@id/profinfirst"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp" />
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/mango"
+        app:layout_constraintTop_toTopOf="@id/profinsecond"
+        app:layout_constraintBottom_toBottomOf="@id/profinsecond"
+        app:layout_constraintStart_toStartOf="@id/profinsecond"
+        app:layout_constraintEnd_toEndOf="@id/profinsecond"
+        android:contentDescription="@string/mango" />
+
+    <TextView
+        android:id="@+id/profinfirst"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/profin"
+        app:layout_constraintTop_toTopOf="@id/topblock"
+        app:layout_constraintBottom_toBottomOf="@id/topblock"
+        app:layout_constraintStart_toStartOf="@id/topblock"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp" />
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/dory"
+        app:layout_constraintTop_toTopOf="@id/profinfirst"
+        app:layout_constraintBottom_toBottomOf="@id/profinfirst"
+        app:layout_constraintStart_toStartOf="@id/profinfirst"
+        app:layout_constraintEnd_toEndOf="@id/profinfirst"
+        android:contentDescription="@string/dory" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/chatdescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/topblock"
+        app:layout_constraintBottom_toBottomOf="@+id/topblock"
+        app:layout_constraintStart_toEndOf="@+id/profinthird"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:id="@+id/roomname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/movie"
+            android:textSize="20sp"
+            android:fontFamily="@font/tmonmonsori"
+            android:textColor="#ffffff"
+            app:layout_constraintTop_toTopOf="@id/chatdescription"
+            app:layout_constraintStart_toStartOf="@+id/chatdescription"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/names"
+            android:textSize="10sp"
+            android:fontFamily="@font/tmonmonsori"
+            android:textColor="#ffffff"
+            app:layout_constraintStart_toStartOf="@+id/roomname"
+            app:layout_constraintTop_toBottomOf="@id/roomname"
+            tools:ignore="SmallSp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/messagewrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="15dp">
+
+        <EditText
+            android:id="@+id/chatinput"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:inputType="textMultiLine"
+            android:hint="@string/message"
+            android:autofillHints="@string/message"
+            android:background="@drawable/messagetypebox"
+            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
+            app:layout_constraintBottom_toBottomOf="@id/messagewrapper"
+            app:layout_constraintStart_toStartOf="@id/messagewrapper"
+            app:layout_constraintEnd_toStartOf="@id/cam"
+            tools:ignore="RtlSymmetry" />
+
+        <Button
+            android:id="@+id/cam"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/cam"
+            app:layout_constraintTop_toTopOf="@id/chatinput"
+            app:layout_constraintBottom_toBottomOf="@id/chatinput"
+            app:layout_constraintStart_toEndOf="@id/chatinput"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"/>
+
+        <Button
+            android:id="@+id/pic"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/pic"
+            app:layout_constraintTop_toTopOf="@id/chatinput"
+            app:layout_constraintBottom_toBottomOf="@id/chatinput"
+            app:layout_constraintStart_toEndOf="@id/cam"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp" />
+
+        <Button
+            android:id="@+id/send"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/aeroplane"
+            app:layout_constraintTop_toTopOf="@id/chatinput"
+            app:layout_constraintBottom_toBottomOf="@id/chatinput"
+            app:layout_constraintStart_toEndOf="@id/pic"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

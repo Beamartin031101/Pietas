@@ -5,17 +5,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/gradient_colour2">
 
+<!--button to next rooms(shells)-->
     <Button
-        android:id="@+id/movieroom"
-        android:layout_width="260dp"
-        android:layout_height="225dp"
+        android:id="@+id/roommovie"
+        android:layout_width="250dp"
+        android:layout_height="215dp"
         android:background="@drawable/shellpur"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="220dp"/>
 
+    <Button
+        android:id="@+id/roomgame"
+        android:layout_width="250dp"
+        android:layout_height="215dp"
+        android:background="@drawable/shellred"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="220dp"/>
+
+    <Button
+        android:id="@+id/roommusic"
+        android:layout_width="250dp"
+        android:layout_height="215dp"
+        android:background="@drawable/shellwhi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="220dp"/>
+
+<!--bg-->
     <ImageView
+        android:id="@+id/sand"
         android:layout_width="900dp"
         android:layout_height="280dp"
         android:src="@drawable/sand"
@@ -30,9 +53,11 @@
         android:src="@drawable/bubbles"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/movieroom"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="100dp"
         android:contentDescription="@string/bubbles" />
 
+<!--description-->
     <TextView
         android:id="@+id/roomname"
         android:layout_width="wrap_content"
@@ -43,7 +68,7 @@
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movieroom"
+        app:layout_constraintTop_toBottomOf="@id/roommovie"
         android:layout_marginTop="40dp"/>
 
     <TextView
@@ -57,5 +82,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/roomname"
         android:layout_marginTop="30dp"/>
+
+<!--move left&right-->
+    <Button
+        android:id="@+id/butLeft"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:background="@drawable/arrowleft"
+        app:layout_constraintBottom_toTopOf="@+id/sand"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+
+    <Button
+        android:id="@+id/butRight"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:background="@drawable/arrowright"
+        app:layout_constraintBottom_toTopOf="@+id/sand"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

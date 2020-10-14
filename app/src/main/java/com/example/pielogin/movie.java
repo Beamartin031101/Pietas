@@ -3,32 +3,30 @@ package com.example.pielogin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class recomendation extends AppCompatActivity {
+public class movie extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recomendation);
+        setContentView(R.layout.movieroom);
 
-        Button ch1 = findViewById(R.id.choice1);
-        ch1.setVisibility(View.VISIBLE);
-        ch1.setBackgroundColor(Color.TRANSPARENT);
+        Button chat = findViewById(R.id.butchat);
 
-        ch1.setOnClickListener(new View.OnClickListener() {
+        chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openRoom();
+                openchat();
             }
         });
+
     }
 
-    public void openRoom() {
-        Intent intent = new Intent(this, room.class);
+    public void openchat() {
+        Intent intent = new Intent(this, chatroom.class);
         startActivity(intent);
     }
 }

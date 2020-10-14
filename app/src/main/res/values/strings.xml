@@ -24,6 +24,12 @@
     <string name="sand">sand</string>
     <string name="bubbles">bubbles</string>
     <string name="names">배재성, 손정은, 하상민</string>
+    <string name="talkroom">취미토크</string>
+	<string name="chatroom">채팅</string>
+    <string name="jelly">jelly</string>
+    <string name="mango">mango</string>
+    <string name="dory">dory</string>
+    <string name="message">Message</string>
     <string name="twitter_consumer_key" translatable="false">gvdJ93LRupuFRK1Ev54ni3NTE</string>
     <string name="twitter_consumer_secret" translatable="false">cW5XKnARWjeGpbnEJXtqpLRzVzWUBhjp6NCq83pbvsMfBJeVDG</string>
 </resources>
