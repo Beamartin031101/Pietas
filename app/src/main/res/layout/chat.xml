@@ -123,7 +123,7 @@
 
         <EditText
             android:id="@+id/chatinput"
-            android:layout_width="290dp"
+            android:layout_width="250dp"
             android:layout_height="40dp"
             android:inputType="textMultiLine"
             android:hint="@string/message"
@@ -157,6 +157,17 @@
             app:layout_constraintStart_toEndOf="@id/cam"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp" />
+
+        <Button
+            android:id="@+id/send"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/aeroplane"
+            app:layout_constraintTop_toTopOf="@id/chatinput"
+            app:layout_constraintBottom_toBottomOf="@id/chatinput"
+            app:layout_constraintStart_toEndOf="@id/pic"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
