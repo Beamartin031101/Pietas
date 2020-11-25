@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--TODO: realative Layout으로 바꾸던지, 아니면 제대로 만들던지 하기-->
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -53,7 +54,7 @@
             app:layout_constraintTop_toBottomOf="@id/logobg" />
 
         <Button
-            android:id="@+id/signin"
+            android:id="@+id/signIn"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="205.5dp"
             android:layout_height="50dp"
@@ -168,7 +169,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/confirm" />
 
-
+<!--TODO: fbutton, Google, Twitter버튼 바꾸기 -->
         <com.facebook.login.widget.LoginButton
             android:id="@+id/fbutton"
             style="@style/facebook_login_btn"
@@ -198,6 +199,8 @@
             android:background="@drawable/twitter"
             app:layout_constraintStart_toEndOf="@id/gbutton"
             app:layout_constraintTop_toTopOf="@id/gbutton" />
+
+
 
         <TextView
             android:layout_width="wrap_content"

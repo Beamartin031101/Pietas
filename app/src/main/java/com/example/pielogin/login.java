@@ -36,6 +36,11 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.auth.TwitterAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.Twitter;
@@ -45,8 +50,14 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import java.util.LinkedList;
+
+
+//TODO: gotoRecam에서 발생하는 에러 해결
 public class login extends AppCompatActivity {
 
+    //Intent for userData
+    private Intent intent;
     //Google Variable init
     private FirebaseAuth mAuth = null;
     private GoogleSignInClient mGoogleSignInClient;
@@ -77,8 +88,9 @@ public class login extends AppCompatActivity {
         //CheckLogIn
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser() != null){
-            openRecom();
+            checkFirstUser();
         }
+
 
         //Google Variable setting
         GoogleSignInOptions gso = new GoogleSignInOptions
@@ -125,7 +137,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
                 if (firebaseAuth.getCurrentUser() != null){
-                    openRecom();
+                    checkFirstUser();
                 }
             }
         };
@@ -150,7 +162,7 @@ public class login extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openRecom();
+                gotoRecom();
             }
         });
     }
@@ -161,8 +173,8 @@ public class login extends AppCompatActivity {
         super.onStart();
         // Check If user is signed in -> update UI
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        //updateUI(currentUser); //TODO: 이게 뭐하는 놈인지 알아보기
-        //이 친구는 구글 공식 문서에서는 signInBtn을 invisible로 바꾸고 signOutBtn을 Visible로 바꾸는 친구임
+        //updateUI(currentUser);
+        //이 친구는 구글 공식 문서에서는 signInBtn 을 invisible 로 바꾸고 signOutBtn 을 Visible 로 바꾸는 친구임
     }
 
     @Override
@@ -171,12 +183,75 @@ public class login extends AppCompatActivity {
         mAuth.removeAuthStateListener(mAuthListener);
     }
 
-    //다음 페이지인 Recommendation으로 가는 부분
-    public void openRecom() {
-        Intent intent = new Intent(this, recomendation.class);
+    private void checkFirstUser(){
+        String currentUser = getUserInfo();
+        LinkedList<String> LoginUserList = parseUserList(getUserList());
+        //TODO: (First) 처음 로그인한건지 조사하는 코드 작성하기
+    }
+
+    //USerInfo 얻어오는 곳임
+    private String getUserInfo(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        return user.getUid();
+    }
+
+    //JSON 에서 UserList 만드는 코드
+    private LinkedList<String> parseUserList(forJson json){
+        //데이터 개수를 알 수 없기 때문에 LinkedList 를 이용한다
+        LinkedList<String> userList = new LinkedList<String>();
+        //여기에 json 파일을 파싱한다
+        return userList;
+    }
+
+    class forJson{
+        private String json;
+
+        public String getJson() {
+            return json;
+        }
+
+        public void setJson(String json) {
+            this.json = json;
+        }
+    }
+
+    // RDB에서 JSON 가져오는 코드
+    private forJson getUserList(){
+        final forJson json = new forJson();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("ValueEventListening", (String) snapshot.getValue());
+                json.setJson((String) snapshot.getValue());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return json;
+    }
+
+    //PutExtra 하는 곳임
+    private void putUserInfo(String Uid){
+        intent.putExtra("Uid",Uid);
+    }
+
+    private void gotoRecom(){
+        intent = new Intent(login.this , recomendation.class);
+        putUserInfo(getUserInfo());
         startActivity(intent);
     }
 
+    private void gotoSignUp(){
+        // intent = new Intent(login.this , something.class) TODO: 여기에 회원가입 페이지로 이동하도록 하기
+        //TODO: SignUp 에서 Userdata 올리기
+        putUserInfo(getUserInfo());
+        //startActivity(intent);
+    }
     //로그인 하는 부분
     private void signIn(){
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -227,7 +302,7 @@ public class login extends AppCompatActivity {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(login.this, "로그인 성공!", Toast.LENGTH_SHORT).show();
-                            openRecom();
+                            checkFirstUser();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -250,7 +325,7 @@ public class login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            openRecom();
+                            checkFirstUser();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -275,7 +350,7 @@ public class login extends AppCompatActivity {
                             Toast.makeText(login.this, "Auth firebase twitter failed", Toast.LENGTH_LONG).show();
                         }
                         else {
-                            openRecom();
+                            checkFirstUser();
                         }
                     }
                 });

@@ -108,6 +108,9 @@ public class room extends AppCompatActivity {
                 }
             }
         });
+
+        //TODO: switch문 이용해서 RDB - Read 하기
+
     }
 
     public void openMovie() {

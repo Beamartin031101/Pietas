@@ -12,5 +12,8 @@ public class chatroom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat);
 
+        // TODO: 데이터 전달해주기
+        // TODO: CR만
+
     }
 }

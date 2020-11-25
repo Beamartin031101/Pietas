@@ -27,6 +27,10 @@ public class recomendation extends AppCompatActivity {
         });
     }
 
+    //TODO: RDB - User Id 가져오기
+    //TODO: RDB - 채팅방 리스트 가져오기 (Random) (안 들어간 거)
+
+
     public void openRoom() {
         Intent intent = new Intent(this, room.class);
         startActivity(intent);

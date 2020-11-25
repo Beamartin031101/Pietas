@@ -23,6 +23,8 @@ public class movie extends AppCompatActivity {
             }
         });
 
+        //TODO: 채팅방 데이터 가져오기
+        //TODO: 채팅방 데이터 intent 로 전달해주기
     }
 
     public void openchat() {
